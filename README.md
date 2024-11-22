@@ -1,2 +1,2 @@
-# ims-report-generator-api-LOS-421
-LOAN Organisation System
+# ims-report-generator-api
+Generates Report using Velocity Template

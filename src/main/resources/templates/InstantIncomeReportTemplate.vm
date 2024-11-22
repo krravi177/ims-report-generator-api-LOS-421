@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+        body { font-size: 12pt; color: #000000; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 8px; border: 1px solid #000000; }
+        h2 { background-color: #4D93D9; }
+        h3 { background-color: #A6C9EC; }
+        .header { background-color: #DAF2D0; font-weight: bold; text-align: center; }
+        .highlight { background-color: #FFC7CE; color: #9C0006; }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Xpanse Instant Income Report</h2>
+
+    <h3 style="text-align: center;">Order Information</h3>
+    <p>Order Date: $orderDate</p>
+    <p>Service Type: $serviceType</p>
+    <p>Transaction ID: $transactionId</p>
+    <p>Loan Identifier: $loanIdentifier</p>
+
+    <p>Verification Vendors:</p>
+    <p>a. Equifax: $equifaxReferenceId</p>
+    <p>b. Experian: $experianReferenceId</p>
+
+    <h3 style="text-align: center;">Borrower Information</h3>
+    <p>Full Name: $fullName</p>
+    <p>Date of Birth: $dob</p>
+    <p>Last Four of SSN: $lastFourSsn</p>
+
+    <h3 style="text-align: center;">Employment History</h3>
+   
+    <table>
+        <tr class="header">
+            <th>Primary Employer</th>
+            <th>Eligibility</th>
+            <th>Employment Duration</th>
+            <th>Income Duration</th>
+            <th>Validation Warning</th>
+        </tr>
+        #foreach($employment in $primaryEmploymentHistory)
+        <tr>
+            <td>$employment.employer</td>
+            <td>$employment.eligibility</td>
+            <td>$employment.employmentDuration</td>
+            <td>$employment.incomeDuration</td>
+            <td class="">TBD</td>
+        </tr>
+        #end
+    </table>
+
+    <br />
+    
+    <table>
+        <tr class="header">
+            <th>Secondary Employer</th>
+            <th>Eligibility</th>
+            <th>Employment Duration</th>
+            <th>Income Duration</th>
+            <th>Validation Warning</th>
+        </tr>
+        #foreach($employment in $secondaryEmploymentHistory)
+        <tr>
+            <td>$employment.employer</td>
+            <td>$employment.eligibility</td>
+            <td>$employment.employmentDuration</td>
+            <td>$employment.incomeDuration</td>
+            <td class="">TBD</td>
+        </tr>
+        #end
+    </table>
+    
+    <h3 style="text-align: center;">Employer Verification Results</h3>
+    #foreach($vendor in $verificationResults.keySet())
+    <br />
+    <table>
+        <tr class="header">
+            <th>Vendor Name</th>
+            <th>Employer Name</th>
+            <th>Status</th>
+            <th>Current as of Date</th>
+        </tr>
+        #foreach($verification in $verificationResults.get($vendor))
+        <tr>
+            <td>$verification.vendorName</td>
+            <td>$verification.employerName</td>
+            <td>$verification.status</td>
+            <td>$verification.currentDate</td>
+        </tr>
+        #end
+    </table>
+    #end
+    
+    <h3 style="text-align: center color:#DAF2D0;">Additional Employer Records</h3>
+
+</body>
+</html>
